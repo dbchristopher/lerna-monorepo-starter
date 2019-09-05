@@ -1,7 +1,7 @@
-const path = require("path");
+const path = require('path')
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators;
+  const { createPage } = boundActionCreators
 
   return graphql(`
     {
@@ -17,19 +17,19 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         }
       }
     }
-  `).then(result => {
+    `).then(result => {
     if (result.errors) {
-      throw result.errors;
+      throw result.errors
     }
 
     result.data.allShoppingJson.edges.map(edge => {
       createPage({
         path: `item/${edge.node.id}`,
-        component: path.resolve("./src/pages/shoppingItem.js"),
+        component: path.resolve('./src/pages/shoppingItem.js'),
         context: {
-          data: edge.node
-        }
-      });
-    });
-  });
-};
+          data: edge.node,
+        },
+      })
+    })
+  })
+}

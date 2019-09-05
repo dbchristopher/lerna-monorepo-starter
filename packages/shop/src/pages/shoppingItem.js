@@ -1,10 +1,6 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import styled from 'styled-components'
-
-const StyledAnchor = styled.a`
-  display: block;
-`
+import { Button } from '@lerna-monorepo/shared-ui'
 
 export default ({ pathContext: { data }}) => {
   if (!data) return null
@@ -13,9 +9,8 @@ export default ({ pathContext: { data }}) => {
     <div>
       <h1>{data.title}</h1>
       <p>{data.content}</p>
-      <StyledAnchor href={data.href}>Full article</StyledAnchor>
-      <Link to="/">Back to Blog</Link>
+      <Button>Purchase</Button>
+      <Link to="/">Back to Shop</Link>
     </div>
   )
 }
-
